@@ -21,6 +21,7 @@ public class TServer {
     private static String TAG = "TServer";
 
     private List<WebSocket> _sockets = new ArrayList<>();
+    private byte[] bytes;
 
     public static TServer getInstance() {
         return new TServer();
@@ -31,8 +32,9 @@ public class TServer {
 
         server.websocket("/connect", new AsyncHttpServer.WebSocketRequestCallback() {
             @Override
-            public void onConnected(WebSocket webSocket, AsyncHttpServerRequest request) {
+            public void onConnected(final WebSocket webSocket, AsyncHttpServerRequest request) {
                 _sockets.add(webSocket);
+                Log.d(TAG, "Someone got connected");
 
                 webSocket.setClosedCallback(new CompletedCallback() {
                     @Override
@@ -60,9 +62,16 @@ public class TServer {
                     }
                 });
 
+
             }
         });
 
         server.listen(5000);
+    }
+
+    public void sendByteArray(byte[] byteArray) {
+        for (WebSocket socket : _sockets) {
+            socket.send(byteArray);
+        }
     }
 }
