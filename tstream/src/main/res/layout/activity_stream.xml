@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/startServer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Server" />
+
+    <Button
+        android:id="@+id/connectClient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connect as a client" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/serverip"
+        android:hint="Enter server ip"/>
+
+    <Button
+        android:id="@+id/stream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Begin streaming" />
+</LinearLayout>
