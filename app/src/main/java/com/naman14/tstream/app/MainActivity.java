@@ -5,13 +5,11 @@ import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.naman14.tstream.TServer;
-import com.naman14.tstream.Utils;
+import com.naman14.tstream.TStream;
 
 import java.io.File;
 
@@ -30,12 +28,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TServer mServer = new TServer(new File(
+                TStream stream = new TStream(new File(
                         Environment.getExternalStorageDirectory() + "/Skyfall.mp3"));
-                String deviceIp = Utils.getIPAddress(true);
-                mServer.init(deviceIp);
-                mServer.start();
-                Log.d("lol", mServer.getFileUrl());
             }
         });
     }
