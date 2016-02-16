@@ -31,6 +31,15 @@ public class TStream {
         mServer = new TServer(file, this);
         String deviceIp = Utils.getIPAddress(true);
         mServer.init(deviceIp);
+    }
+
+    public TStream(File file, MediaObject mediaObject) {
+        mServer = new TServer(file, this, mediaObject);
+        String deviceIp = Utils.getIPAddress(true);
+        mServer.init(deviceIp);
+    }
+
+    public void startStreaming() {
         mServer.start();
     }
 

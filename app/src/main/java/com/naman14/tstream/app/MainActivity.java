@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 TStream stream = new TStream(new File(
                         Environment.getExternalStorageDirectory() + "/Skyfall.mp3"));
+                stream.startStreaming();
             }
         });
     }

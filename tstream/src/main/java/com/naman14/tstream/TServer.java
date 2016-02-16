@@ -7,6 +7,9 @@ import com.koushikdutta.async.http.WebSocket;
 import com.koushikdutta.async.http.server.AsyncHttpServer;
 import com.koushikdutta.async.http.server.AsyncHttpServerRequest;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
@@ -30,11 +33,17 @@ public class TServer implements Runnable {
     private TStream stream;
     private Thread thread;
     private File mStreamFile;
+    private MediaObject mediaObject = new MediaObject();
 
 
     public TServer(File file, TStream stream) {
         mStreamFile = file;
         this.stream = stream;
+    }
+
+    public TServer(File file, TStream stream, MediaObject object) {
+        this(file, stream);
+        this.mediaObject = object;
     }
 
     public int getPort() {
@@ -118,6 +127,17 @@ public class TServer implements Runnable {
             public void onConnected(final WebSocket webSocket, AsyncHttpServerRequest request) {
                 _sockets.add(webSocket);
 
+                try {
+                    JSONObject object = new JSONObject();
+
+                    object.put("title", mediaObject.getTitle());
+                    object.put("author", mediaObject.getAuthor());
+                    object.put("URL", getFileUrl());
+
+                    webSocket.send("MEDIA : " + object.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 //Use this to clean up any references to your websocket
                 webSocket.setClosedCallback(new CompletedCallback() {
                     @Override
