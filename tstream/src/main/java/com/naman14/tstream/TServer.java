@@ -185,4 +185,20 @@ public class TServer implements Runnable {
         for (WebSocket socket : _sockets)
             socket.send(command);
     }
+
+    public void updateMedia(MediaObject mediaObject) {
+        this.mediaObject = mediaObject;
+        try {
+            JSONObject object = new JSONObject();
+
+            object.put("title", mediaObject.getTitle());
+            object.put("author", mediaObject.getAuthor());
+            object.put("URL", getFileUrl());
+
+            for (WebSocket socket : _sockets)
+                socket.send("MEDIA : " + object.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }

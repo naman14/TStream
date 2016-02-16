@@ -303,6 +303,10 @@ public class TStream {
     }
 
 
+    public void updateMediaObject(MediaObject object) {
+
+    }
+
     public interface SeekListener {
         void onSeekChanged(float position);
     }
