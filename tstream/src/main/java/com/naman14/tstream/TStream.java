@@ -282,6 +282,7 @@ public class TStream {
         }
     }
 
+
     public String getStreamUrl() {
         return mServer.getFileUrl();
     }

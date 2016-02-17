@@ -154,7 +154,7 @@ public class TServer implements Runnable {
                 webSocket.setStringCallback(new WebSocket.StringCallback() {
                     @Override
                     public void onStringAvailable(String s) {
-                        if (s.contains("SEEK TO : ")) {
+                        if (s.contains("SEEK") && seekListener != null) {
                             seekListener.onSeekChanged(Float.parseFloat(s.substring(10, s.length())));
                         }
                         actionCallback.onCommandReceived(s);
@@ -167,6 +167,7 @@ public class TServer implements Runnable {
         server.listen(5000);
 
     }
+
 
     public void seek(float position) {
         for (WebSocket socket : _sockets)

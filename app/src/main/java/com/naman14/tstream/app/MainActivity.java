@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.naman14.tstream.MediaObject;
 import com.naman14.tstream.TStream;
 
 import java.io.File;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
                 stream.startStreaming();
             }
         });
+
+        MediaObject mediaObject = new MediaObject();
     }
 
     @Override

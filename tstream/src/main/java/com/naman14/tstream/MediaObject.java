@@ -5,12 +5,14 @@ package com.naman14.tstream;
  */
 public class MediaObject {
 
-    public String title;
-    public String author;
+    private String title;
+    private String author;
+    private String url;
 
     public MediaObject() {
         this.title = null;
         this.author = null;
+        this.url = null;
     }
 
     public String getTitle() {
@@ -27,5 +29,13 @@ public class MediaObject {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
