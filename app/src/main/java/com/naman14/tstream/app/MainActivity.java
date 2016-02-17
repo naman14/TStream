@@ -1,5 +1,6 @@
 package com.naman14.tstream.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
@@ -36,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         MediaObject mediaObject = new MediaObject();
+    }
+
+
+    public void musicStream(View view) {
+        startActivity(new Intent(this, MusicStreamActivity.class));
     }
 
     @Override

@@ -10,8 +10,8 @@ public class MediaObject {
     private String url;
 
     public MediaObject() {
-        this.title = null;
-        this.author = null;
+        this.title = "";
+        this.author = "";
         this.url = null;
     }
 
